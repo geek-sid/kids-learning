@@ -1,0 +1,21 @@
+<div class="category-selection-container">
+  <div class="welcome-header">
+    <h1 class="welcome-title">🌟 Welcome to Kids Learning! 🌟</h1>
+    <p class="welcome-subtitle">Choose what you want to learn today!</p>
+  </div>
+
+  <div class="categories-grid">
+    @for (category of categories; track category.id) {
+      <a 
+        [routerLink]="['/category', category.id]" 
+        class="category-card"
+        [style.--category-color]="category.color"
+        (click)="onCategorySelect(category.id)">
+        <div class="category-icon">{{ category.icon }}</div>
+        <h2 class="category-name">{{ category.name }}</h2>
+        <p class="category-description">{{ category.description }}</p>
+        <div class="category-arrow">→</div>
+      </a>
+    }
+  </div>
+</div>
