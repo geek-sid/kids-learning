@@ -1,0 +1,14 @@
+export default `<!doctype html>
+<html lang="en" data-beasties-container="">
+<head>
+  <meta charset="utf-8">
+  <title>KidsLearning</title>
+  <base href="/kids-learning/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Comic Sans MS,Chalkboard SE,Comic Neue,cursive,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}html,body{height:100%}</style><link rel="stylesheet" href="styles-XGYWNQKT.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-XGYWNQKT.css"></noscript></head>
+<body ngcm="">
+  <app-root></app-root>
+<script src="polyfills-B6TNHZQ6.js" type="module"></script><script src="main-O3E3VJUX.js" type="module"></script></body>
+</html>
+`;

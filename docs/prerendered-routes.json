@@ -1,0 +1,8 @@
+{
+  "routes": {
+    "/kids-learning": {},
+    "/kids-learning/category/english": {},
+    "/kids-learning/category/maths": {},
+    "/kids-learning/category/maths/addition": {}
+  }
+}
