@@ -1,0 +1,29 @@
+<div class="maths-container">
+  <div class="back-button-container">
+    <a routerLink="/" class="back-button">← Back to Categories</a>
+  </div>
+
+  <div class="maths-header">
+    <div class="category-icon-large">🔢</div>
+    <h1 class="category-title">Maths Learning</h1>
+    <p class="category-subtitle">Let's have fun with numbers!</p>
+  </div>
+
+  <div class="activities-grid">
+    @for (activity of activities; track activity.id) {
+      @if (activity.id === 'addition') {
+        <a [routerLink]="['/category/maths/addition']" class="activity-card">
+          <div class="activity-icon">{{ activity.icon }}</div>
+          <h2 class="activity-name">{{ activity.name }}</h2>
+          <p class="activity-description">{{ activity.description }}</p>
+        </a>
+      } @else {
+        <div class="activity-card">
+          <div class="activity-icon">{{ activity.icon }}</div>
+          <h2 class="activity-name">{{ activity.name }}</h2>
+          <p class="activity-description">{{ activity.description }}</p>
+        </div>
+      }
+    }
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="english-container">
+  <div class="back-button-container">
+    <a routerLink="/" class="back-button">← Back to Categories</a>
+  </div>
+
+  <div class="english-header">
+    <div class="category-icon-large">📚</div>
+    <h1 class="category-title">English Learning</h1>
+    <p class="category-subtitle">Let's learn English together!</p>
+  </div>
+
+  <div class="activities-grid">
+    @for (activity of activities; track activity.id) {
+      <div class="activity-card">
+        <div class="activity-icon">{{ activity.icon }}</div>
+        <h2 class="activity-name">{{ activity.name }}</h2>
+        <p class="activity-description">{{ activity.description }}</p>
+      </div>
+    }
+  </div>
+</div>

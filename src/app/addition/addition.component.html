@@ -1,0 +1,104 @@
+<div class="addition-container">
+  <div class="back-button-container">
+    <a routerLink="/category/maths" class="back-button">← Back to Maths</a>
+  </div>
+
+  <div class="game-header">
+    <div class="header-content">
+      <h1 class="game-title">➕ Addition Practice</h1>
+      <div class="score-board">
+        <span class="score-label">Score:</span>
+        <span class="score-value">{{ score }}/{{ questions.length }}</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" [style.width.%]="gameCompleted ? 100 : ((currentQuestionIndex + (currentQuestion.isAnswered ? 1 : 0)) / questions.length) * 100"></div>
+      </div>
+      <p class="question-counter">Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</p>
+    </div>
+  </div>
+
+  @if (!gameCompleted) {
+    <div class="question-container">
+      <div class="question-box">
+        <div class="numbers-display">
+          <div class="number large-number">{{ currentQuestion.num1 }}</div>
+          <div class="operator">+</div>
+          <div class="number large-number">{{ currentQuestion.num2 }}</div>
+          <div class="equals">=</div>
+          <div class="answer-box" [class.show-answer]="currentQuestion.isAnswered">
+            @if (currentQuestion.isAnswered) {
+              <span class="answer-number" [class.correct]="currentQuestion.isCorrect" [class.wrong]="!currentQuestion.isCorrect">
+                {{ currentQuestion.userAnswer }}
+              </span>
+            } @else {
+              <span class="answer-placeholder">?</span>
+            }
+          </div>
+        </div>
+
+        @if (!currentQuestion.isAnswered) {
+          <div class="answer-options">
+            @for (option of currentQuestion.answerOptions; track option) {
+              <button 
+                class="answer-button" 
+                (click)="submitAnswer(option)"
+                [attr.aria-label]="'Answer ' + option">
+                {{ option }}
+              </button>
+            }
+          </div>
+        } @else {
+          <div class="correct-answer-display">
+            @if (currentQuestion.isCorrect) {
+              <div class="result-icon correct-icon">✓</div>
+              <p class="correct-text">Correct! The answer is {{ currentQuestion.answer }}</p>
+            } @else {
+              <div class="result-icon wrong-icon">✗</div>
+              <p class="wrong-text">Oops! The correct answer is {{ currentQuestion.answer }}</p>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  @if (gameCompleted) {
+    <div class="completion-screen">
+      @if (showCelebration) {
+        <div class="celebration">
+          <div class="celebration-icon">🎉</div>
+          <div class="celebration-icon">🌟</div>
+          <div class="celebration-icon">✨</div>
+          <div class="celebration-icon">🎊</div>
+          <div class="celebration-icon">👏</div>
+        </div>
+      }
+      <h2 class="completion-title">Game Complete!</h2>
+      <div class="final-score">
+        <p class="score-text">You got</p>
+        <p class="score-number">{{ score }}</p>
+        <p class="score-text">out of {{ questions.length }} correct!</p>
+      </div>
+      @if (score >= 8) {
+        <p class="excellent-message">🌟 Excellent work! You're a math star! 🌟</p>
+      } @else if (score >= 5) {
+        <p class="good-message">👍 Good job! Keep practicing! 👍</p>
+      } @else {
+        <p class="keep-trying-message">💪 Keep practicing! You'll get better! 💪</p>
+      }
+      <div class="completion-actions">
+        <button class="restart-button" (click)="restartGame()">Play Again</button>
+        <a routerLink="/category/maths" class="back-to-maths-button">Back to Maths</a>
+      </div>
+    </div>
+  }
+
+  @if (showFeedback && feedbackType) {
+    <div class="feedback-overlay" [class.correct-feedback]="feedbackType === 'correct'" [class.wrong-feedback]="feedbackType === 'wrong'">
+      <div class="feedback-content">
+        <div class="feedback-icon">{{ feedbackType === 'correct' ? '🎉' : '😔' }}</div>
+        <p class="feedback-message">{{ feedbackMessage }}</p>
+      </div>
+    </div>
+  }
+</div>
