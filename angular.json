@@ -38,19 +38,16 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "server": "src/main.server.ts"
+           
           },
           "configurations": {
             "production": {
               "baseHref": "/kids-learning/",
+              "ssr": false,
               "outputPath": {
-                "base":"dist/kids-learning",
-                "browser":"",
-                "server":""
+                "base":"docs",
+                "browser":""
               },
               "budgets": [
                 {
@@ -70,6 +67,7 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
+              "ssr": false,
               "baseHref": "/kids/",
               "outputPath": {
                 "base":"docs",

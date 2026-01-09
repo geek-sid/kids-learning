@@ -1,2 +1,0 @@
-export default `*{margin:0;padding:0;box-sizing:border-box}body{font-family:Comic Sans MS,Chalkboard SE,Comic Neue,cursive,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}html,body{height:100%}
-`;
