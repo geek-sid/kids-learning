@@ -38,8 +38,8 @@ export class AdditionComponent implements OnInit {
   generateQuestions() {
     this.questions = [];
     for (let i = 0; i < 10; i++) {
-      const num1 = Math.floor(Math.random() * 20) + 1; // 1-20
-      const num2 = Math.floor(Math.random() * (21 - num1)) + 1; // Ensure sum <= 20
+      const num1 = Math.floor(Math.random() * 50) + 1; // 1-20
+      const num2 = Math.floor(Math.random() * (51 - num1)) + 1; // Ensure sum <= 20
       let answerOptions = this.generateAnswerOptions(num1 + num2);
      // this.cdr.detectChanges();
       this.questions.push({
@@ -60,7 +60,6 @@ export class AdditionComponent implements OnInit {
 
   submitAnswer(answer: number) {
     if (this.currentQuestion.isAnswered) return;
-
     this.currentQuestion.userAnswer = answer;
     this.currentQuestion.isAnswered = true;
     this.currentQuestion.isCorrect = answer === this.currentQuestion.answer;
@@ -100,45 +99,13 @@ export class AdditionComponent implements OnInit {
     }, 2000);
   }
 
- /* generateAnswerOptions():number[] {
-    const correctAnswer = this.currentQuestion.answer;
-    this.answerOptions = [];
-    const options = new Set<number>([correctAnswer]);
-    
-    // Generate wrong options that are close to the correct answer
-    let attempts = 0;
-    const maxAttempts = 100;
-    
-    while (options.size < 4 && attempts < maxAttempts) {
-      attempts++;
-      // Generate numbers around the correct answer (±5 range)
-      const offset = Math.floor(Math.random() * 11) - 5; // -5 to +5
-      const wrongAnswer = correctAnswer + offset;
-      
-      // Ensure the wrong answer is positive and different from correct answer
-      if (wrongAnswer > 0 && wrongAnswer <= 40 && wrongAnswer !== correctAnswer) {
-        options.add(wrongAnswer);
-      }
-    }
-    console.log(options);
-    this.answerOptions = Array.from(options);
-    return this.answerOptions;
-    // Convert to array and shuffle
-    const optionsArray = Array.from(options);
-   /* for (let i = optionsArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [optionsArray[i], optionsArray[j]] = [optionsArray[j], optionsArray[i]];
-    }*/
-    
-  //}
-
   generateAnswerOptions(answer:number):number[] {
     const correctAnswer = answer;
     const options = new Set<number>([correctAnswer]);
     
     // Generate wrong options that are close to the correct answer
     let attempts = 0;
-    const maxAttempts = 100;
+    const maxAttempts = 10000;
     
     while (options.size < 4 && attempts < maxAttempts) {
       attempts++;
@@ -147,20 +114,17 @@ export class AdditionComponent implements OnInit {
       const wrongAnswer = correctAnswer + offset;
       
       // Ensure the wrong answer is positive and different from correct answer
-      if (wrongAnswer > 0 && wrongAnswer <= 40 && wrongAnswer !== correctAnswer) {
+      if (wrongAnswer > 0 && wrongAnswer <= 100 && wrongAnswer !== correctAnswer) {
         options.add(wrongAnswer);
       }
     }
-    console.log(options);
     const optionsArray = Array.from(options);
-    return optionsArray;
-    // Convert to array and shuffle
-   
-   /* for (let i = optionsArray.length - 1; i > 0; i--) {
+    // Shuffle options using Fisher–Yates algorithm
+    for (let i = optionsArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [optionsArray[i], optionsArray[j]] = [optionsArray[j], optionsArray[i]];
-    }*/
-    
+    }
+    return optionsArray;
   }
 
   completeGame() {

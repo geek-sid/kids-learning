@@ -598,14 +598,14 @@
 .correct-feedback {
   .feedback-content {
     border: 4px solid #4CAF50;
-    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.05) 100%);
+    background-color: green;
   }
 }
 
 .wrong-feedback {
   .feedback-content {
     border: 4px solid #F44336;
-    background: linear-gradient(135deg, rgba(244, 67, 54, 0.1) 0%, rgba(244, 67, 54, 0.05) 100%);
+    background-color: red !important;
   }
 }
 
